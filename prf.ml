@@ -1,9 +1,12 @@
 let zero arg = 
-        match arg with 
+        match arg with
         | -1::[] -> -1
-        | n::[] -> 0
+        | n::ns -> 0
         | _ -> let _ = print_endline "error: an arg of zero is wrong" in
                 -1
+
+        
+                
 
 let suc arg = 
         match arg with 
@@ -76,4 +79,5 @@ let test3 = P 1 (* projection func to the 2nd var *)
 let test4 = Comp [S; S] (* plus 2 *)
 let test6 = P 0 (* id func *)
 let test7 = Pr (P 0, Comp [S; P 0]) (* add *)
+let test8 = Pr (P 0, P 1)
 let add = trans_exp test7
