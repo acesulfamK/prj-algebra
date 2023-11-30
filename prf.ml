@@ -79,5 +79,9 @@ let test3 = P 1 (* projection func to the 2nd var *)
 let test4 = Comp [S; S] (* plus 2 *)
 let test6 = P 0 (* id func *)
 let test7 = Pr (P 0, Comp [S; P 0]) (* add *)
-let test8 = Pr (P 0, P 1)
+let test8 = Pr (Z, Comp[Pr (P 0, Comp [S; P 0]); P 0; P 2]) (* mul *)
+let test9 = Comp [Pr (Comp[S; Z], Comp[Pr (Z, Comp[Pr(P 0, Comp [S; P 0]); P 0; P 2]); P 0; P 2]); P 1; P 0] (* pow *)
+let test10 = Pr (P 0, P 1) (* sub 1 (if x == 0 then 0) *)
 let add = trans_exp test7
+let mul = trans_exp test8
+let pow = trans_exp test9
